@@ -1,6 +1,7 @@
 import { ProductDescription } from 'src/product-description/entities/product-description.entity';
+import { Purchase } from 'src/purchase/entities/purchase.entity';
 import { ProductPriceCategory, ProductThemeCategory, ProductType } from 'src/utils/enums';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Product {
@@ -36,4 +37,7 @@ export class Product {
 
   @OneToOne(() => ProductDescription, (description) => description.product)
   description: ProductDescription;
+
+  @OneToMany(() => Purchase, (purchase) => purchase.product)
+  purchases: Purchase[]
 }
