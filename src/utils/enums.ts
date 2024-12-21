@@ -17,3 +17,8 @@ export enum ProductThemeCategory {
   SEA = 'sea',
   ILLUSTRATIONS = 'illustrations'
 }
+
+export enum UserRole {
+  CLIENT = 'client',
+  ADMIN = 'admin'
+}

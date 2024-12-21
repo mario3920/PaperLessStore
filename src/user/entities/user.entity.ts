@@ -1,5 +1,12 @@
 import { Purchase } from 'src/purchase/entities/purchase.entity';
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UserRole } from 'src/utils/enums';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
@@ -14,7 +21,10 @@ export class User {
 
   @Column()
   password: string;
-  
+
+  @Column({ type: 'enum', enum: UserRole })
+  role: string;
+
   @OneToMany(() => Purchase, (purchase) => purchase.user)
-  purchases: Purchase[]
+  purchases: Purchase[];
 }
